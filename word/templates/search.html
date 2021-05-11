@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block header %}
+{% load static %}
+
+<!--CSS-->
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<!--검색결과 load-->
+<div class="search_keyword">
+    <p>"{{keyword}}"를 검색한 결과입니다.</p>
+</div>
+
+{%if check %}
+<!--모든 게시물-->
+<div class="container-fluid">
+    <div class="row">
+        {% for word in words.all %}
+        <div class="col-sm-3 card">
+            <div class="title">{{word.title}}</div>
+            <div class="date">{{word.pup_date}}</div>
+            <div class="summary">{{word.summary}}</div>
+            <a class="link" href="{% url 'detail' word.id%}">....더보기</a>
+            <a class="link" href="{% url 'delete' word.id %}"> 삭제</a>
+            <a class="link" href="{% url 'edit' word.id %}"> 수정</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% else %}
+<!--검색 결과 없을때-->
+{% if empty %}
+<div class="container-fluid">
+    <div class="row" id="empty">
+        {{empty}}
+    </div>
+</div>
+{% else %}
+<!--검색결과 존재할때-->
+<div class="container-fluid">
+    <div class="row">
+        {% for result in results.all %}
+        <div class="col-sm-3 card">
+            <div class="title">{{result.title}}</div>
+            <div class="date">{{result.pup_date}}</div>
+            <div class="summary">{{result.summary}}</div>
+            <a class="link" href="{% url 'detail' result.id%}">....더보기</a>
+            <a class="link" href="{% url 'delete' result.id %}"> 삭제</a>
+            <a class="link" href="{% url 'edit' result.id %}"> 수정</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+{% endif %}
+
+{% endblock %}

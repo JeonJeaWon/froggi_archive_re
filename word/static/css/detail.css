@@ -1,0 +1,40 @@
+/*detail*/
+.detail{
+    background-color: #EFEFEF;
+    margin: 10% 10% 10%;
+    border-radius: 10px;
+}
+
+.title{
+    font-family : 'Nanum-EB';
+    font-size: 25px;
+    text-align: center;
+    padding: 4% 5% 4%;
+}
+.date{
+    font-family : 'Nanum-R';
+    font-size: 15px;
+    text-align: right;
+    padding: 1% 2% 1% 1%;
+}
+
+.body{
+    font-family : 'Nanum-B';
+    font-size: 20px;
+    text-align: center;
+    padding:3% 2% 2% 2%;
+}
+
+.link{
+    font-family : 'Nanum-B';
+    font-size: 17px;
+    text-align: center;
+    padding: 3% 0% 3%;
+}
+
+.hashtag{
+    font-family : 'Nanum-B';
+    font-size: 17px;
+    text-align: center;
+    padding: 3% 0% 3%;
+}

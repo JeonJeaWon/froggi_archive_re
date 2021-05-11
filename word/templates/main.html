@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% block header %}
+{% load static %}
+
+<!-- Link Swiper's CSS -->
+<!--link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" /-->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+<!--CSS-->
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<!-- Swiper -->
+<div class="swiper_div">
+	<div class="swiper-container" style="height: 27em;">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<img src="{% static 'images/main3.jpg' %}" height="120%" alt="Slide1">
+			</div>
+			<div class="swiper-slide">
+				<img src="{% static 'images/main2.jpg' %}" height="120%" alt="Slide2">
+			</div>
+			<div class="swiper-slide">
+				<img src="{% static 'images/main1.jpg' %}" height="120%" alt="Slide3">
+			</div>
+		</div>
+		<!-- Add Pagination -->
+		<div class="swiper-pagination" id="swiper_icon"></div>
+		<!-- Add Arrows -->
+		<div class="swiper-button-next" id="swiper_icon"></div>
+		<div class="swiper-button-prev" id="swiper_icon"></div>
+	</div>
+</div>
+<div id="stb_subscribe">
+	<div class="apply_upper">
+		<h1 class="stb_form_title" style="font-size:2em;"><br>Froggi 구독하기</h1>
+		<p class="stb_form_description" style="font-size:1.5em;"><br>FroGGi | 청년들의 성장
+			뉴스레터📰🌱🐸<br>🐸우물 밖 개구리되기<br>🌱매주 월,수,금
+			프로거들을
+			찾아갑니다~!</p>
+	</div>
+
+	<div class="apply_down">
+		<link rel="stylesheet"
+			href="https://s3.ap-northeast-2.amazonaws.com/resource.stibee.com/subscribe/stb_subscribe_form_style.css">
+		<form action="https://stibee.com/api/v1.0/lists/0bJOSssxzcD2z9rkg1gYPGGODeHwwQ==/public/subscribers"
+			method="POST" target="_blank" accept-charset="utf-8" class="stb_form" name="stb_subscribe_form"
+			id="stb_subscribe_form" novalidate="">
+			<fieldset class="stb_form_set">
+				<label for="stb_email" class="stb_form_set_label" style="font-size: 1.3em;">
+					이메일 주소
+				</label>
+				<input type="email" class="stb_form_set_input" id="stb_email" name="email" required="required">
+
+				<div class="stb_form_msg_error" id="stb_email_error"></div>
+			</fieldset>
+			<fieldset class="stb_form_set">
+				<label for="stb_name" class="stb_form_set_label" style="font-size: 1.3em;">
+					닉네임
+				</label>
+
+				<input type="text" class="stb_form_set_input" id="stb_name" name="name">
+				<div class="stb_form_msg_error" id="stb_name_error"></div>
+			</fieldset>
+
+			<div class="stb_form_policy">
+				<label>
+					<input type="checkbox" id="stb_policy" value="stb_policy_true">
+					<button id="stb_form_modal_open" data-modal="stb_form_policy_modal" class="stb_form_modal_open_btn"
+						type="button">개인정보 수집 및 이용</button>에 동의합니다.
+				</label>
+				<div class="stb_form_msg_error" id="stb_policy_error"></div>
+				<div class="stb_form_modal stb_form_policy_text blind" id="stb_form_policy_modal">
+					<div class="stb_form_modal_body">
+						<h1 class="stb_form_modal_title">개인정보 수집 및 이용</h1>
+						<p class="stb_form_modal_text">
+							뉴스레터 발송을 위한 최소한의 개인정보를 수집하고 이용합니다.
+							수집된 정보는 발송 외 다른 목적으로 이용되지 않으며, 서비스가 종료되거나 구독을 해지할 경우 즉시 파기됩니다.
+						</p>
+						<div class="stb_form_modal_btn">
+							<button id="stb_form_modal_close" class="stb_form_modal_close_btn"
+								data-modal="stb_form_policy_modal" type="button">닫기</button>
+						</div>
+					</div>
+					<div class="stb_form_modal_bg" id="stb_form_modal_bg"></div>
+				</div>
+			</div>
+
+			<div class="stb_form_result" id="stb_form_result">
+			</div>
+
+			<fieldset class="stb_form_set_submit">
+				<button type="submit" class="stb_form_submit_button" id="stb_form_submit_button"
+					style="background-color: rgb(207, 240, 218); color: rgb(58, 197, 105);">구독하기</button>
+			</fieldset>
+		</form>
+		<script src="https://www.google.com/recaptcha/api.js" async="" defer=""></script>
+		<script type="text/javascript"
+			src="https://s3.ap-northeast-2.amazonaws.com/resource.stibee.com/subscribe/stb_subscribe_form.js"></script>
+	</div>
+</div>
+
+<!-- Swiper JS -->
+<!--script src="https://unpkg.com/swiper/swiper-bundle.js"></script-->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+	var swiper = new Swiper('.swiper-container', {
+		spaceBetween: 30,
+		centeredSlides: true,
+		autoplay: {
+			delay: 10000,
+			disableOnInteraction: false,
+		},
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true,
+		},
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		},
+	});
+
+</script>
+{% endblock %}

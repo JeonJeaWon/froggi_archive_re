@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block header %}
+{% load static %}
+
+
+<!--CSS-->
+<link rel="stylesheet" href="{% static 'css/new.css' %}">
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% endblock %}
+
+{% block content %}
+<!--수정폼-->
+<div class="container">
+    <form action="{% url 'update' word.id %}" method="POST">
+        {% csrf_token %}
+        <div class="row" id="title">
+            <div class="text">단어 </div>
+            <input type="text" name="title" value="{{word.title}}">
+        </div>
+        <div id="content">
+            <div class="text">뜻 </div>
+            <textarea cols=90 rows=10 name="body">{{word.body}}</textarea>
+        </div>
+            <input class="btn btn-secondary" type="submit" value="제출하기">
+        </div>
+    </form>
+</div>
+
+{% endblock %}

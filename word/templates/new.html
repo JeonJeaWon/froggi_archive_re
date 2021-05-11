@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block header %}
+{% load static %}
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="{% static 'css/new.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    
+{% endblock %}
+
+{% block content %}
+
+    <!--글 작성 폼-->
+    <div class="container">
+        <form action="{% url 'create'%}">
+            <div class="row" id="title">
+                <div class="text">제목</div>
+                <input type="text" name="title">
+            </div>
+
+            <div id="content">
+                <div class="text">내용</div>
+                <textarea cols=90 rows=10 name="body"></textarea>
+            </div>
+
+            <div id="hashtag">
+                <div class="text">해시태그</div>
+                <input type="text" name="hashtags" placeholder="해시태그(,로 구분)">
+                <div class="row" id="button">
+                    <input class="btn btn-secondary" type="submit" value="제출하기">
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

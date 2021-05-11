@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block header %}
+{% load static %}
+
+<!--CSS-->
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<!--필터 버튼-->
+<div class="d-flex justify-content-center py-3" style="margin-left:1em;">
+    <div class="row">
+        <form action="{% url 'filter' %}" class="filter" method='GET'>
+            <button type="submit" class="filter_item" name='hash_fi' value="경제">경제💰</button>
+        </form>
+        <form action="{% url 'filter' %}" class="filter" method='GET'>
+            <button type="submit" class="filter_item" name='hash_fi' value="진로">진로⛳</button>
+        </form>
+        <form action="{% url 'filter' %}" class="filter" method='GET'>
+            <button type="submit" class="filter_item" name='hash_fi' value="인간관계">인간관계👥</button>
+        </form>
+        <form action="{% url 'filter' %}" class="filter" method='GET'>
+            <button type="submit" class="filter_item" name='hash_fi' value="학업">학업✍</button>
+        </form>
+        <form action="{% url 'filter' %}" class="filter" method='GET'>
+            <button type="submit" class="filter_item" name='hash_fi' value="취미">취미🎨</button>
+        </form>
+        <form action="{% url 'filter' %}" class="filter" method='GET'>
+            <button type="submit" class="filter_item" name='hash_fi' value="건강">건강🏃‍♂</button>
+        </form>
+        <form action="{% url 'filter' %}" class="filter" method='GET'>
+            <button type="submit" class="filter_item" name='hash_fi' value="아카이브">아카이브📚</button>
+        </form>
+    </div>
+</div>
+
+<!--필터링 키워드 확인-->
+<div class="search_div" id="keyword" stlye="align:center;">
+    <div class="search_keyword">
+        <p>"{{value}}"를 필터링한 결과입니다.</p>
+    </div>
+</div>
+
+<!--필터링 결과 없을때-->
+{% if empty %}
+<div class="search_div" id="keyword">
+    <div class="search_container" id="empty">
+        {{empty}}
+    </div>
+</div>
+
+{% else %}
+<!--검색결과 존재할때-->
+<div class="container-fluid">
+    <div class="row">
+        {% for result in results.all %}
+        <div class="col-sm-3 card">
+            <div class="title">{{result.title}}</div>
+            <div class="date">{{result.pup_date}}</div>
+            <div class="summary">{{result.summary}}</div>
+            <a class="link" href="{% url 'detail' result.id%}">....더보기</a>
+            <a class="link" href="{% url 'delete' result.id %}"> 삭제</a>
+            <a class="link" href="{% url 'edit' result.id %}"> 수정</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

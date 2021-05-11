@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block header %}
+{% load static %}
+
+<!--CSS-->
+<link rel="stylesheet" href="{% static 'css/detail.css' %}">
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<!--디테일 카드-->
+<div class="detail">
+    <div class="title">
+        <h1>{{ word.title }}</h1>
+    </div>
+    <div class="date">
+        <p>{{ word.pup_date }}</p>
+    </div>
+    <div class="body">
+        <p>{{ word.body }}</p>
+    </div>
+
+    <div class="hashtag">
+        {% for hashtag in hashtags %}
+        #{{ hashtag.name }}
+        {% endfor %}
+    </div>
+    <br>
+    <div class="link"><a href="{% url 'home' %}">돌아가기</a></div>
+</div>
+
+{% endblock %}

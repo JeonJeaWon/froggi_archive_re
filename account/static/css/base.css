@@ -1,0 +1,173 @@
+/* 폰트 적용 */
+@font-face { 
+    font-family: 'Nanum-B';
+    src: local('Nanum-B'), url('../font/NanumSquareB.ttf');
+}
+@font-face { 
+    font-family: 'Nanum-EB';
+    src: local('Nanum-EB'), url('../font/NanumSquareEB.ttf');
+}
+@font-face { 
+    font-family: 'Nanum-L'; 
+    src: local('Nanum-L'), url('../font/NanumSquareL.ttf');
+}
+@font-face { 
+    font-family: 'Nanum-R'; 
+    src: local('Nanum-R'), url('../font/NanumSquareR.ttf');
+}
+@font-face {
+    font-family: 'SDSamliphopangche_Outline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* 페이지 공통 */
+html{
+    margin:0; padding:0;
+}
+
+body{
+    background-image: linear-gradient(to left,#74ebd5 0%, #9face6 100%);
+    font-family: 'Nanum-EB';
+    margin:0; padding:0;
+}
+
+a {text-decoration: none;
+    color: black;
+}
+
+a:link {text-decoration: none;}
+a:visited {text-decoration: none; }
+a:active {text-decoration: none; }
+a:hover {text-decoration: none; }
+
+
+/*navbar*/
+.navbar_wrapper{
+    margin-top: 0.5em;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar_logo{
+    font-family: 'SDSamliphopangche_Outline';
+    font-size: 55px;
+    color: black;
+    justify-content: center;
+    width: 100%; 
+    text-align: center;
+    border-bottom-style: groove;
+}
+
+.navbar_logo i{
+    color:#3ac569;
+}
+
+.navbar nav{
+    padding: 0;
+    margin: 0;
+}
+
+.navbar_menu{
+    display: flex;
+    font-size: 1.25em;
+    list-style: none;
+    padding: 0;
+}
+
+.navbar_menu li {
+    padding: 0.5em 1.5em 0.5em 1.5em;
+    text-align: center;
+}
+
+.navbar_menu li:hover {
+    background-color:#76e9d6;
+    border-radius: 4px;
+}
+
+.navbar_toggleBtn{
+    display: none;
+    position: absolute;
+    right: 32px;
+    font-size: 32px;
+    color:white;
+}
+
+.navbar_icons{
+    list-style: none;
+    font-size: 25px;
+    color: black;
+    display: flex;
+    padding: 0;
+}
+
+.navbar_icons li{
+    padding: 0px 1em;
+    list-style: none;
+}
+
+.search{
+    padding-right: 0.5em;
+    padding-top: 0.25em;
+    padding-bottom: 0;
+}
+
+#user{
+    font-family: "Nanum-B";
+    color: #FFFFFF;
+    font-size: 15px;
+    margin: 1% 0% 1% 1%;
+}
+
+@media screen and (max-width: 768px){
+    .navbar{
+        flex-direction: column;
+        align-items:flex-start;
+        padding: 2px 10px;
+    }
+    .navbar_menu{
+        display: none;
+        flex-direction: column;
+        align-items:center;
+        width: 100%;
+    }
+
+    .navbar_menu li{
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar_icons{
+        display: none;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .navbar_toggleBtn{
+        display: block;
+    }
+    
+    .navbar_menu.active,
+    .navbar_icons.active{
+        display: flex;
+    }
+}
+
+/*contents*/
+.contents{
+    font-size: 48px;
+}

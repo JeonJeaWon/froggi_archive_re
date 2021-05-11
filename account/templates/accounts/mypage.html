@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block header %}
+{% load static %}
+
+<!--CSS-->
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/accountform.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="account_div">
+    <div class="account_container">
+        <!--로그인 정보-->
+        <br>
+        <br>
+        <br>
+        <h1>{{user.username}}🐸님 환영합니다!</h1>
+        <br>
+        <br>
+        <!--로그아웃 폼-->
+        <h2>회원탈퇴</h2>
+        <form action="{% url 'mem_delete' %}" method="POST" id="del_form">
+            {% csrf_token %}
+            <input type="button" value="회원탈퇴" onclick="mem_delete()" />
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function mem_delete() {
+        del_form = document.getElementById("del_form")
+        if (confirm("정말로 탈퇴하시겠습니까?") == true) {
+            del_form.submit();
+        }
+        else {
+            return;
+        }
+    }
+</script>
+
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,30 @@
+/*입력 창*/
+.text{
+    font-family : 'Nanum-B';
+    font-size: 20px;
+    margin: 0% 1% 0% 0%
+}
+
+/*제목 파트*/
+#title{
+    margin:5% 20% 3%;;
+}
+input{
+    border-width: 3px;
+    border-color: #00462A
+}
+
+/*내용 파트*/
+#content{
+    margin:3% 20% 3%;;
+}
+
+textarea{
+    border-width: 3px;
+    border-color: #00462A
+}
+
+/*버튼*/
+#button{
+    margin: 0% 0% 0% 20%;
+}

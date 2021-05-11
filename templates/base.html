@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<div class="wrapper">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!--meta name="viewport" content="width=device-width, initial-scale=1"-->
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        {% block header %}
+        {% endblock%}
+
+        <!--CSS-->
+        <link rel="stylesheet" href="css/base.css">
+
+        <!--icons-->
+        <script src="https://kit.fontawesome.com/351ea5145b.js" crossorigin="anonymous"></script>
+        <!--js-->
+        <script src="static/js/navbar.js" defer></script>
+    </head>
+
+    <body>
+        <div class="main_content">
+            <div class="navbar_wrapper">
+                <nav class="navbar">
+                    <div class="navbar_logo">
+                        <i class="fas fa-frog"></i>
+                        <a href="{% url 'main'%}">FroGGii</a>
+                    </div>
+                    <a href="#" class="navbar_toggleBtn">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                </nav>
+                <nav class="navbar">
+                    <ul class="navbar_menu">
+                        <li><a href="{% url 'home'%}">Archive</li>
+                        <li><a href="{% url 'about'%}">About</a></li>
+                        {% if user.is_authenticated %}
+                        <li id="user">{{user.username}}🐸</li>
+                        <li class="log_menu"><a href="{% url 'new' %}">글쓰기</a></li>
+                        <li class="log_menu"><a href="{% url 'mypage' %}">MyPage</a></li>
+                        <li class="log_menu"><a href="javascript:{document.getElementById('logout').submit()}">
+                                LogOut</a>
+                            <form id="logout" method="POST" action="{% url 'logout' %}">
+                                {% csrf_token %}
+                                <input type="hidden">
+                            </form>
+                            {% else %}
+                        <li class="log_menu"><a href="{% url 'signup'%}">SignIn</a></li>
+                        <li class="log_menu"><a href="{% url 'login'%}">LogIn</a></li>
+                        {% endif %}
+                    </ul>
+                    <!--검색-->
+                    <ul class="navbar_icons">
+                        <li>
+                            <form class="search" action="{% url 'search' %}" method="GET">
+                                <input type="text" name="search">
+                                <button class="btn btn-outline-secondary" type="submit">검색</button>
+                            </form>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+
+            {% block content %}
+            {% endblock%}
+
+        </div>
+
+        <!-- footer -->
+
+        <footer>
+            <div class="text-center p-3" style="background-color: #06879a; margin-top:0px;">
+                © 2021 Copyright:
+                <!-- Copyright -->
+                <a class="text-white">FroGGii</a>
+            </div>
+        </footer>
+</div>
+
+</body>
+
+<script>
+    const toggleBtn = document.querySelector('.navbar_toggleBtn');
+    const menu = document.querySelector('.navbar_menu');
+    const icons = document.querySelector('.navbar_icons');
+
+    toggleBtn.addEventListener('click', () => {
+        menu.classList.toggle('active');
+        icons.classList.toggle('active');
+    });
+</script>
+
+</html>

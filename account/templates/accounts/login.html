@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block header %}
+{% load static %}
+
+
+<!--CSS-->
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/accountform.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<!--로그인폼-->
+<div class="account_div">
+    <div class="account_container"style=font-size:1.5em;>
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <div class=usernames tyle=font-size:1em;>Username:</div>
+            <input name="username" type="text" value="">
+            <br>
+            <div class=password style=font-size:1em;>Password:</div>
+            <input name="password" type="password" value="">
+            <br>
+            <br>
+            <input class="btn btn-primary" type="submit" value="Login" style="background-color: #06879a;">
+        </form>
+
+        {% if error %}
+        {{error}}
+
+        {% endif%}
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block header %}
+{% load static %}
+
+<!--CSS-->
+<link rel="stylesheet" href="{% static 'css/accountform.css' %}">
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="account_div">
+    <div class="account_container" style=font-size:1.5em;>
+ <!--에러 발생 시-->
+{% if error %}
+        {{error}}
+        <br>
+        <br>
+        {% endif%}
+
+ <!--회원가입폼-->
+        <form action="{% url 'signup' %}" method="POST">
+            {% csrf_token %}
+            Username:
+            <input name="username" type="text" value="">
+            <br>
+            <br>
+            Password:
+            <input name="password1" type="password" value="">
+            <br>
+            <br>
+            Confirm Password:
+            <input name="password2" type="password" value="">
+            <br>
+            <br>
+            <input class="btn btn-primary" type="submit" value="sign up" style="background-color: #06879a;">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

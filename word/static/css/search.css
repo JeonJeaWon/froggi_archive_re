@@ -1,0 +1,35 @@
+.search_div {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    border:0;
+    color:#333;
+    box-sizing: border-box;
+    position: relative;
+    height: 33em;
+    text-align: center;
+    height:100%;
+}
+
+#keyword{
+    font-family : 'Nanum-R';
+    font-size: 18px;
+    text-align: center;
+    padding: 5% 5% 1% 5%;
+    margin-top: 2%;
+}
+
+#empty{
+    font-family : 'Nanum-EB';
+    font-size: 30px;
+    text-align: center;
+}
+
+p {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+button, input, optgroup, select, textarea{
+    font-size: 1.3em;
+}
